@@ -51,3 +51,18 @@ form .error-msg { color:#dc3545; font-size:0.9rem; margin-top:5px; display:none;
 #searchFAQ { width:100%; padding:15px; margin-bottom:20px; border-radius:8px; border:1px solid #ced4da; font-size:1.1rem; }
 
 footer { text-align:center; padding:40px; background:#212529; color:white; margin-top:100px; font-size:1.1rem; }
+
+.dark-theme {
+    background: #121212 !important;
+    color: #e0e0e0 !important;
+}
+.dark-theme .container, .dark-theme .card, .dark-theme .accordion-header {
+    background: #1e1e1e !important;
+    color: #e0e0e0 !important;
+    border-color: #333 !important;
+}
+.dark-theme .btn-primary { background:#0d6efd; }
+.dark-theme .btn-success { background:#198754; }
+.dark-theme .btn-danger { background:#dc3545; }
+.dark-theme header { background:#000 !important; }
+.dark-theme footer { background:#000 !important; color:#aaa !important; }
