@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ</title><link rel="stylesheet" href="style.css"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <!-- меню -->
+    <header>
+        <nav>
+            <div class="logo">Тестовый Сайт</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="portfolio.html">Портфолио</a></li>
+                <li><a href="blog.html">Блог</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="faq.html" class="active">FAQ</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="container">
-        <h1>Часто задаваемые вопросы</h1>
+    <main>
+        <div class="container">
+            <h1>Часто задаваемые вопросы</h1>
+            <input type="text" id="searchFAQ" placeholder="Поиск по вопросам..." onkeyup="searchFAQ()">
 
-        <div class="accordion-header" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display==='block'?'none':'block'">
-            Вопрос 1: Как установить Selenium IDE?
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggle(this)">Как установить Selenium IDE?</div>
+                <div class="accordion-content">Перейдите в Chrome Web Store → найдите Selenium IDE → установить</div>
+
+                <div class="accordion-header" onclick="toggle(this)">Какие локаторы самые надёжные?</div>
+                <div class="accordion-content">ID → name → css → xpath</div>
+
+                <div class="accordion-header" onclick="toggle(this)">Можно ли запускать тесты параллельно?</div>
+                <div class="accordion-content">Да, через Selenium Grid или NUnit + Task</div>
+            </div>
         </div>
-        <div class="accordion-content">Скачайте расширение из Chrome Web Store...</div>
+    </main>
 
-        <div class="accordion-header" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display==='block'?'none':'block'">
-            Вопрос 2: Какие браузеры поддерживает WebDriver?
-        </div>
-        <div class="accordion-content">Chrome, Firefox, Edge, Safari...</div>
-
-        <div class="accordion-header" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display==='block'?'none':'block'">
-            Вопрос 3: Можно ли запускать тесты параллельно?
-        </div>
-        <div class="accordion-content">Да, через Selenium Grid или NUnit...</div>
-    </div>
     <footer>© 2025 Тестовый сайт для Selenium</footer>
+    <script>
+        function toggle(el) {
+            el.nextElementSibling.style.display = el.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+        }
+        function searchFAQ() {
+            let input = document.getElementById('searchFAQ').value.toLowerCase();
+            document.querySelectorAll('.accordion-header').forEach(h => {
+                h.style.display = h.textContent.toLowerCase().includes(input) ? 'block' : 'none';
+            });
+        }
+    </script>
 </body>
 </html>
