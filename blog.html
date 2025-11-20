@@ -1,23 +1,43 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Блог</title><link rel="stylesheet" href="style.css"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <!-- меню -->
+    <header>
+        <nav>
+            <div class="logo">Тестовый Сайт</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="portfolio.html">Портфолио</a></li>
+                <li><a href="blog.html" class="active">Блог</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="container">
-        <h1>Блог</h1>
-        <article style="margin-bottom:40px;">
-            <h2>Статья 1: Selenium IDE</h2>
-            <p>Как быстро записать тесты...</p>
-            <a href="#" class="btn">Читать полностью</a>
-        </article>
-        <article>
-            <h2>Статья 2: WebDriver на C#</h2>
-            <p>Подключение драйверов Chrome и Firefox...</p>
-            <a href="#" class="btn">Читать полностью</a>
-        </article>
-    </div>
+    <main>
+        <div class="container">
+            <h1>Блог</h1>
+            <article style="margin-bottom:40px; padding-bottom:20px; border-bottom:1px solid #eee;">
+                <h2>Selenium IDE vs WebDriver</h2>
+                <p>Сравнение инструментов для начинающих...</p>
+                <button class="btn btn-primary">Читать →</button>
+            </article>
+            <article>
+                <h2>Как писать надёжные локаторы</h2>
+                <p>XPath, CSS-селекторы, явные ожидания...</p>
+                <button class="btn btn-primary">Читать →</button>
+            </article>
+        </div>
+    </main>
     <footer>© 2025 Тестовый сайт для Selenium</footer>
 </body>
 </html>
