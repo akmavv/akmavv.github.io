@@ -1,35 +1,54 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Услуги</title><link rel="stylesheet" href="style.css"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <!-- меню как выше, только class="active" у Услуги -->
+    <header>
+        <nav>
+            <div class="logo">Тестовый Сайт</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="services.html" class="active">Услуги</a></li>
+                <li><a href="portfolio.html">Портфолио</a></li>
+                <li><a href="blog.html">Блог</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="container">
-        <h1>Наши услуги</h1>
+    <main>
+        <div class="container">
+            <h1>Наши услуги</h1>
 
-        <div class="tabs">
-            <button class="tab-btn active" data-tab="web">Веб-разработка</button>
-            <button class="tab-btn" data-tab="test">Тестирование</button>
-            <button class="tab-btn" data-tab="design">Дизайн</button>
+            <div class="tabs" style="display:flex; gap:10px; margin-bottom:30px; flex-wrap:wrap;">
+                <button class="btn btn-primary tab-btn active" data-tab="web">Веб-разработка</button>
+                <button class="btn btn-primary tab-btn" data-tab="auto">Автотесты</button>
+                <button class="btn btn-primary tab-btn" data-tab="design">Дизайн</button>
+            </div>
+
+            <div id="web" class="tab-content">Создаём сайты на HTML/CSS/JS</div>
+            <div id="auto" class="tab-content" style="display:none;">Пишем тесты на Selenium WebDriver (C#, Java, Python)</div>
+            <div id="design" class="tab-content" style="display:none;">UI/UX и прототипы в Figma</div>
         </div>
+    </main>
 
-        <div id="web" class="tab-content active">Разработка сайтов на HTML/CSS/JS</div>
-        <div id="test" class="tab-content">Автоматизация на Selenium</div>
-        <div id="design" class="tab-content">UI/UX дизайн</div>
-    </div>
-
+    <footer>© 2025 Тестовый сайт для Selenium</footer>
     <script>
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
                 btn.classList.add('active');
-                document.getElementById(btn.dataset.tab).classList.add('active');
+                document.getElementById(btn.dataset.tab).style.display = 'block';
             });
         });
     </script>
-
-    <footer>© 2025 Тестовый сайт для Selenium</footer>
 </body>
 </html>
