@@ -1,37 +1,66 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Галерея</title><link rel="stylesheet" href="style.css"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <!-- меню -->
+    <header>
+        <nav>
+            <div class="logo">Тестовый Сайт</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="portfolio.html">Портфолио</a></li>
+                <li><a href="blog.html">Блог</a></li>
+                <li><a href="gallery.html" class="active">Галерея</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="container">
-        <h1>Галерея</h1>
-        <div style="text-align:center;">
-            <img id="slider" src="https://source.unsplash.com/random/800x400/?nature" alt="slide" style="max-width:100%; border-radius:10px;">
-            <br><br>
-            <button class="btn" onclick="changeSlide(-1)">Предыдущая</button>
-            <button class="btn" onclick="changeSlide(1)">Следующая</button>
+    <main>
+        <div class="container">
+            <h1>Галерея</h1>
+            <div style="margin-bottom:20px;">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="nature">Природа</button>
+                <button class="filter-btn" data-filter="city">Город</button>
+            </div>
+
+            <div class="grid" id="galleryGrid">
+                <img src="https://source.unsplash.com/random/400x300/?nature" alt="nature" class="nature" onclick="openLightbox(this.src)">
+                <img src="https://source.unsplash.com/random/400x300/?city" alt="city" class="city" onclick="openLightbox(this.src)">
+                <img src="https://source.unsplash.com/random/400x300/?forest" alt="nature" class="nature" onclick="openLightbox(this.src)">
+                <img src="https://source.unsplash.com/random/400x300/?building" alt="city" class="city" onclick="openLightbox(this.src)">
+            </div>
         </div>
+    </main>
 
-        <h2 style="margin-top:50px;">Фильтр по категориям:</h2>
-        <label><input type="checkbox" checked> Природа</label><br>
-        <label><input type="checkbox"> Город</label><br>
-        <label><input type="checkbox"> Люди</label>
+    <div class="lightbox" id="lightbox" onclick="this.style.display='none'">
+        <img src="" id="lightboxImg">
     </div>
 
-    <script>
-        const images = [
-            "https://source.unsplash.com/random/800x400/?nature",
-            "https://source.unsplash.com/random/800x400/?city",
-            "https://source.unsplash.com/random/800x400/?people"
-        ];
-        let i = 0;
-        function changeSlide(n) {
-            i = (i + n + images.length) % images.length;
-            document.getElementById('slider').src = images[i];
-        }
-    </script>
     <footer>© 2025 Тестовый сайт для Selenium</footer>
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightboxImg').src = src;
+        }
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('#galleryGrid img').forEach(img => {
+                    img.style.display = (filter === 'all' || img.classList.contains(filter)) ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
