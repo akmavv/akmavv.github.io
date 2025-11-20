@@ -1,45 +1,69 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Контакты</title><link rel="stylesheet" href="style.css"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <!-- меню с active у Контакты -->
+    <header>
+        <nav>
+            <div class="logo">Тестовый Сайт</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="portfolio.html">Портфолио</a></li>
+                <li><a href="blog.html">Блог</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html" class="active">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="container">
-        <h1>Обратная связь</h1>
-        
-        <form id="contactForm">
-            <input type="text" placeholder="Ваше имя" required id="name">
-            <input type="email" placeholder="Email" required id="email">
-            <input type="tel" placeholder="Телефон">
+    <main>
+        <div class="container">
+            <h1>Обратная связь</h1>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Имя" required>
+                <div class="error-msg">Поле обязательно для заполнения</div>
 
-            <select required>
-                <option value="">Выберите тему</option>
-                <option>Сотрудничество</option>
-                <option>Техподдержка</option>
-                <option>Другое</option>
-            </select>
+                <input type="email" id="email" placeholder="Email" required>
+                <div class="error-msg">Введите корректный email</div>
 
-            <textarea placeholder="Сообщение" rows="5" required></textarea>
+                <textarea id="message" rows="5" placeholder="Сообщение" required></textarea>
+                <div class="error-msg">Сообщение не может быть пустым</div>
 
-            <label><input type="radio" name="type" value="private" checked> Частное лицо</label>
-            <label><input type="radio" name="type" value="company"> Компания</label>
+                <label><input type="checkbox" id="agree" required> Согласен с политикой конфиденциальности</label>
 
-            <label><input type="checkbox" required> Согласен на обработку данных</label>
+                <button type="submit" class="btn btn-success">Отправить</button>
+                <button type="reset" class="btn btn-danger">Очистить</button>
+            </form>
+            <div id="result" style="margin-top:20px; font-weight:bold;"></div>
+        </div>
+    </main>
 
-            <button type="submit" class="btn">Отправить</button>
-            <button type="reset" class="btn btn-danger">Очистить</button>
-        </form>
-
-        <div id="result" style="margin-top:20px; font-weight:bold;"></div>
-    </div>
-
+    <footer>© 2025 Тестовый сайт для Selenium</footer>
     <script>
         document.getElementById('contactForm').onsubmit = function(e) {
             e.preventDefault();
-            document.getElementById('result').innerHTML = '<p style="color:green;">Форма успешно отправлена (демо)!</p>';
-        }
+            let valid = true;
+            this.querySelectorAll('input[required], textarea[required]').forEach(field => {
+                if (!field.value.trim() || (field.type === 'email' && !field.value.includes('@'))) {
+                    field.classList.add('error');
+                    field.nextElementSibling.style.display = 'block';
+                    valid = false;
+                } else {
+                    field.classList.remove('error');
+                    field.nextElementSibling.style.display = 'none';
+                }
+            });
+            if (valid) {
+                document.getElementById('result').innerHTML = '<p style="color:green;">Спасибо! Форма отправлена успешно (демо).</p>';
+            }
+        };
     </script>
-    <footer>© 2025 Тестовый сайт для Selenium</footer>
 </body>
 </html>
