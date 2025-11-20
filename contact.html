@@ -65,5 +65,19 @@
             }
         };
     </script>
+    <div style="margin-top:30px; text-align:center;">
+    <p>Или напишите напрямую: <span id="emailDisplay">test@akmavv.ru</span></p>
+    <button class="btn btn-info" onclick="copyEmail()">Скопировать email</button>
+    <p id="copyStatus" style="color:green; margin-top:10px;"></p>
+</div>
+
+<script>
+function copyEmail() {
+    navigator.clipboard.writeText('test@akmavv.ru');
+    document.getElementById('copyStatus').textContent = 'Email скопирован в буфер обмена!';
+    setTimeout(() => document.getElementById('copyStatus').textContent = '', 3000);
+}
+</script>
 </body>
 </html>
+
