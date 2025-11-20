@@ -7,14 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- то же меню -->
     <header>
         <nav>
             <div class="logo">Тестовый Сайт</div>
             <ul class="nav-menu">
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="about.html" class="active">О нас</a></li>
-                <!-- остальные пункты такие же -->
                 <li><a href="services.html">Услуги</a></li>
                 <li><a href="portfolio.html">Портфолио</a></li>
                 <li><a href="blog.html">Блог</a></li>
@@ -25,29 +23,29 @@
         </nav>
     </header>
 
-    <div class="container">
-        <h1>О нас</h1>
-        <p>Мы — команда тестировщиков и разработчиков.</p>
-        <button class="btn" id="showMore">Показать больше информации</button>
-        <div id="moreInfo" style="display:none; margin-top:20px;">
-            <p>Дополнительная информация появилась!</p>
+    <main>
+        <div class="container">
+            <h1>О нас</h1>
+            <p>Мы — команда студентов и тестировщиков, создаём сайты специально для практики Selenium.</p>
+            
+            <button class="btn btn-primary" onclick="alert('Спасибо за интерес!')">Узнать больше</button>
+            <button class="btn btn-info" id="showTeam">Показать команду</button>
+            
+            <div id="team" style="display:none; margin-top:30px;">
+                <div class="grid">
+                    <div class="card"><div class="card-body"><h3>Арина</h3><p>Тестировщик-автоматизатор</p></div></div>
+                    <div class="card"><div class="card-body"><h3>Иван</h3><p>Frontend-разработчик</p></div></div>
+                </div>
+            </div>
         </div>
-
-        <h2 style="margin-top:40px;">Выберите язык:</h2>
-        <select id="langSelect">
-            <option>Russian</option>
-            <option>English</option>
-            <option>Deutsch</option>
-        </select>
-    </div>
-
-    <script>
-        document.getElementById('showMore').onclick = function() {
-            document.getElementById('moreInfo').style.display = 'block';
-            this.style.display = 'none';
-        }
-    </script>
+    </main>
 
     <footer>© 2025 Тестовый сайт для Selenium</footer>
+    <script>
+        document.getElementById('showTeam').onclick = () => {
+            document.getElementById('team').style.display = 'block';
+            this.style.display = 'none';
+        };
+    </script>
 </body>
 </html>
