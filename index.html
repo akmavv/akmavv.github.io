@@ -23,31 +23,38 @@
         </nav>
     </header>
 
-    <div class="container">
-        <h1>Добро пожаловать на тестовый сайт!</h1>
-        <p>Этот сайт создан специально для лабораторной работы №5 по автоматизации тестирования.</p>
-        
-        <button class="btn" onclick="alert('Кнопка 1 нажата!')">Кнопка 1</button>
-        <button class="btn btn-success">Успешная кнопка</button>
-        <button class="btn btn-danger">Кнопка удаления</button>
-        <a href="contact.html" class="btn">Перейти в контакты</a>
-        <a href="#section2" class="btn">Якорь вниз</a>
+    <main>
+        <div class="container">
+            <h1>Добро пожаловать на тестовый сайт!</h1>
+            <p>Сайт специально создан для лабораторной работы №5 по автоматизации тестирования Selenium.</p>
+            
+            <div style="margin:40px 0;">
+                <button class="btn btn-primary" onclick="alert('Привет!')">Кнопка с алертом</button>
+                <button class="btn btn-success" id="counterBtn">Увеличить счётчик</button>
+                <button class="btn btn-danger" onclick="document.getElementById('modal').style.display='flex'">Открыть модалку</button>
+                <a href="contact.html" class="btn btn-info">Перейти в контакты</a>
+            </div>
 
-        <div style="margin-top:50px;" id="section2">
-            <h2>Быстрые действия</h2>
-            <button class="btn" onclick="document.getElementById('modal1').style.display='flex'">Открыть модальное окно</button>
+            <p>Счётчик кликов: <span class="counter" id="counter">0</span></p>
+            <div class="progress"><div class="progress-bar" id="progress"></div></div>
         </div>
-    </div>
+    </main>
 
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="this.parentElement.parentElement.style.display='none'">×</span>
-            <h2>Привет!</h2>
-            <p>Это модальное окно для теста</p>
-            <button class="btn" onclick="this.parentElement.parentElement.style.display='none'">Закрыть</button>
+    <div id="modal" class="lightbox" onclick="this.style.display='none'">
+        <div style="text-align:center; color:white;">
+            <h2>Модальное окно</h2>
+            <p>Нажмите вне окна, чтобы закрыть</p>
         </div>
     </div>
 
     <footer>© 2025 Тестовый сайт для Selenium</footer>
+
+    <script>
+        let count = 0;
+        document.getElementById('counterBtn').onclick = () => {
+            count++; document.getElementById('counter').textContent = count;
+            document.getElementById('progress').style.width = Math.min(count*10, 100) + '%';
+        };
+    </script>
 </body>
 </html>
