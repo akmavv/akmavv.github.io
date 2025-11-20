@@ -43,6 +43,18 @@
 
     <div class="lightbox" id="lightbox" onclick="this.style.display='none'">
         <img src="" id="lightboxImg">
+        <button class="btn btn-primary" style="margin-top:20px;" onclick="addRandomPhoto()">Добавить случайное фото</button>
+
+<script>
+function addRandomPhoto() {
+    const grid = document.getElementById('galleryGrid');
+    const img = document.createElement('img');
+    img.src = 'https://source.unsplash.com/random/400x300/?' + Date.now();
+    img.style.margin = '10px';
+    img.onclick = () => openLightbox(img.src);
+    grid.appendChild(img);
+}
+</script>
     </div>
 
     <footer>© 2025 Тестовый сайт для Selenium</footer>
@@ -64,3 +76,4 @@
     </script>
 </body>
 </html>
+
